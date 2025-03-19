@@ -24,7 +24,12 @@ final class LogConfiguration {
     }
     _initialized = true;
 
-    if (bool.fromEnvironment('MAPBOX_LOG_DEBUG', defaultValue: true)) {
+    /// Enable on Web
+    final bool enableDebugLogging = kIsWeb
+        ? true
+        : const bool.fromEnvironment('MAPBOX_LOG_DEBUG', defaultValue: true);
+
+    if(enableDebugLogging){
       LogConfiguration.registerLogWriterBackend(_DebugLoggingBackend());
     }
   }
