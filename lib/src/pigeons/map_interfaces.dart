@@ -5084,6 +5084,9 @@ class _MapboxOptions {
   }
 
   Future<void> setAccessToken(String token) async {
+    if(kIsWeb){
+      return;
+    }
     final String pigeonVar_channelName =
         'dev.flutter.pigeon.mapbox_maps_flutter._MapboxOptions.setAccessToken$pigeonVar_messageChannelSuffix';
     final BasicMessageChannel<Object?> pigeonVar_channel =
